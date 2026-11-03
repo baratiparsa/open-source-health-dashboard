@@ -1,0 +1,351 @@
+
+/* =========================
+   Global styles
+========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #f5f5f5;
+  background: #0b0d12;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --accent: #a5b4fc;
+  --accent-bg: #151923;
+  --accent-border: #818cf8;
+  --border: #292d38;
+  --muted: #a4a9b6;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #0b0d12;
+  color: #f5f5f5;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+a {
+  color: #e0e7ff;
+}
+
+/* =========================
+   Main layout
+========================= */
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.dashboard {
+  width: calc(100% - 40px);
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.header {
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.header h1 {
+  margin: 0 0 10px;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.header p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* =========================
+   Welcome section
+========================= */
+
+.welcome {
+  margin-top: 40px;
+  padding: 40px;
+  background: #151923;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.welcome h2 {
+  margin: 0 0 12px;
+  font-size: 32px;
+  line-height: 1.2;
+}
+
+.welcome p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.welcome label {
+  display: block;
+  margin-top: 24px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* =========================
+   Search input
+========================= */
+
+.search-input {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #383e4c;
+  border-radius: 8px;
+  background: #0b0d12;
+  color: #f5f5f5;
+  font: inherit;
+  transition: border-color 0.2s, outline-color 0.2s;
+}
+
+.search-input::placeholder {
+  color: #737b8c;
+}
+
+.search-input:focus {
+  outline: 2px solid #a5b4fc;
+  outline-offset: 2px;
+  border-color: #a5b4fc;
+}
+
+/* =========================
+   Dropdown filters
+========================= */
+
+.welcome select {
+  display: block;
+  width: 100%;
+  margin: 8px 0 16px;
+  padding: 12px;
+  border: 1px solid #383e4c;
+  border-radius: 8px;
+  background: #0b0d12;
+  color: #f5f5f5;
+  font: inherit;
+  cursor: pointer;
+}
+
+.welcome select:focus {
+  outline: 2px solid #a5b4fc;
+  outline-offset: 2px;
+}
+
+/* =========================
+   Buttons
+========================= */
+
+.welcome form button,
+.welcome > button {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 12px 18px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: #e0e7ff;
+  color: #111827;
+  font-size: 15px;
+  font-weight: 700;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.welcome form button:hover:not(:disabled),
+.welcome > button:hover:not(:disabled) {
+  background: #c7d2fe;
+  transform: translateY(-1px);
+}
+
+.welcome form button:focus-visible,
+.welcome > button:focus-visible {
+  outline: 2px solid #a5b4fc;
+  outline-offset: 3px;
+}
+
+/* =========================
+   Status and errors
+========================= */
+
+.welcome [role="alert"] {
+  padding: 12px 14px;
+  border: 1px solid #7f1d1d;
+  border-radius: 8px;
+  background: #2b1116;
+  color: #fecaca;
+}
+
+.welcome [role="status"] {
+  color: #a5b4fc;
+}
+
+.result-count {
+  margin-top: 24px;
+  font-size: 14px;
+}
+
+/* =========================
+   Repository cards
+========================= */
+
+.project-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.project-card {
+  min-width: 0;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #0f121a;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.project-card:hover {
+  border-color: #454d60;
+  transform: translateY(-2px);
+}
+
+.project-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.project-heading h3 {
+  min-width: 0;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.project-heading a {
+  color: #e0e7ff;
+  text-decoration: none;
+}
+
+.project-heading a:hover {
+  text-decoration: underline;
+}
+
+.project-heading span {
+  flex-shrink: 0;
+  color: #facc15;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.project-card p {
+  min-height: 48px;
+  margin: 16px 0;
+  color: #a4a9b6;
+  font-size: 14px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.project-card small {
+  color: #a5b4fc;
+  font-size: 12px;
+}
+
+/* =========================
+   Responsive design
+========================= */
+
+@media (max-width: 600px) {
+  .dashboard {
+    width: calc(100% - 24px);
+    padding: 24px 0;
+  }
+
+  .header h1 {
+    font-size: 24px;
+  }
+
+  .welcome {
+    margin-top: 24px;
+    padding: 22px;
+  }
+
+  .welcome h2 {
+    font-size: 26px;
+  }
+
+  .project-list {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card {
+    padding: 16px;
+  }
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.pagination button {
+  padding: 10px 16px;
+  border: 1px solid #383e4c;
+  border-radius: 8px;
+  background: #151923;
+  color: #f5f5f5;
+  font-weight: 600;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.pagination button:hover:not(:disabled) {
+  background: #252b39;
+  border-color: #818cf8;
+}
+
+.pagination button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  color: #a4a9b6;
+  font-size: 14px;
+}
